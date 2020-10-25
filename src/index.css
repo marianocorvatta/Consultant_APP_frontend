@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: "NewsCycleRegular";
+}
+
+@font-face {
+  font-family: MontserratMedium;
+  src: url(./assets/fonts/Montserrat-Medium.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: NewsCycleRegular;
+  src: url(./assets/fonts/NewsCycle-Regular.ttf) format("truetype");
+}
