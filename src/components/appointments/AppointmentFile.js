@@ -6,8 +6,6 @@ import {
   Select,
   MenuItem,
   Button,
-  List,
-  ListItem,
   Box,
 } from "@material-ui/core";
 import moment from "moment";
@@ -22,23 +20,12 @@ import "../../assets/styleSheets/AutocompleteStyle.css";
 import AppointmentTypes from "./AppointmentTypes";
 import DataServices from "../../services/DataServices";
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
 
 const AppointmentFile = ({ setAppointmentSelected }) => {
   let { appointmentSelectedData, getHistory, historyList } = useContext(
     AppContext
   );
   const [init, setInit] = useState(false);
-  const [flowers, setFlowers] = useState(appointmentSelectedData.flowers);
   const [isCompleted, setIsCompleted] = useState(
     appointmentSelectedData.completed
   );
@@ -89,6 +76,7 @@ const AppointmentFile = ({ setAppointmentSelected }) => {
       is.not.empty(appointmentSelectedData.flowers) &&
         setFlowersSelected(appointmentSelectedData.flowers);
     }
+    // eslint-disable-next-line
   }, [init]);
 
   const saveData = async () => {
@@ -123,10 +111,6 @@ const AppointmentFile = ({ setAppointmentSelected }) => {
     }
   };
 
-  const handleChangeFlowers = (e) => {
-    setFlowers(e.target.value);
-    setEdit(true);
-  };
   const handleChangeIsCompleted = (e) => {
     setIsCompleted(e.target.value);
     setEdit(true);

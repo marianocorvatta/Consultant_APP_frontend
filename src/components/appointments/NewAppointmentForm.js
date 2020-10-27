@@ -3,7 +3,6 @@ import {Container, Card , CardContent, CardHeader, CardActions,TextField, MenuIt
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import is from 'is_js';
-import moment from "moment";
 
 
 import DataServices from '../../services/DataServices';
@@ -43,7 +42,8 @@ const NewAppointmentForm = () => {
         if(is.empty(consultantsData)) {
             getConsultants();
         }
-    }, [])
+        // eslint-disable-next-line
+    }, [consultantsData])
 
     const setAppointment = async () => {
         const data = {
@@ -125,7 +125,6 @@ const NewAppointmentForm = () => {
                                             step: '3000', // 5 min
                                             }}
                                         onChange={(e) => {
-                                            // setDate(moment(e.target.value).format("yyyy-MM-DD"));
                                             setDate(e.target.value);
                                             console.log("horario",e.target.value)
                                           }}

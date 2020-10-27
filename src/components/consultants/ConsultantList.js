@@ -33,11 +33,16 @@ const ConsultantList = () => {
     const [isLoading, setIsloading] = useState(false);
 
     useEffect(() => {
-        setIsloading(true);
         if (!init) {
-            getConsultants();
-            setIsloading(false);
-          }
+            setIsloading(true)
+            try {
+                getConsultants();
+                setInit(true);
+                setIsloading(false);
+            } catch (e) {
+                console.log(e);
+            } 
+        }
           // eslint-disable-next-line
     }, [init]);
 

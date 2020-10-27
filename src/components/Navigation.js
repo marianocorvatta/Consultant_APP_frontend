@@ -44,7 +44,7 @@ const Navigation = () => {
           <AppBar position="static" style={{  backgroundColor: '#DEB1DF'}}>
             <Toolbar>
               <Typography className={classes.title} variant="h6" noWrap>
-                <Link style={{ textDecoration: 'none', color: '#ffff',fontFamily: "NewsCycleRegular"}} onClick={getToHome}>
+                <Link to='' style={{ textDecoration: 'none', color: '#ffff',fontFamily: "NewsCycleRegular"}} onClick={getToHome}>
                   HOME
                 </Link>
               </Typography>
