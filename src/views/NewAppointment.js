@@ -1,5 +1,5 @@
-import React from 'react'
-import NewAppointmentForm from '../components/NewAppointmentForm'
+import React from 'react';
+import NewAppointmentForm from '../components/appointments/NewAppointmentForm';
 
 const NewAppointment = () => {
 

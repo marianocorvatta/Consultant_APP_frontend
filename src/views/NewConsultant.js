@@ -1,5 +1,5 @@
-import React from 'react'
-import NewConsultantForm from '../components/NewConsultantForm'
+import React from 'react';
+import NewConsultantForm from '../components/consultants/NewConsultantForm';
 
 const NewConsultant = () => {
     return (

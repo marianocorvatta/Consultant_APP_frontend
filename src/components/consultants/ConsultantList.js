@@ -4,7 +4,7 @@ import React,
     useState,
     useContext,
  } from 'react';
-import { Container, IconButton,Tooltip } from '@material-ui/core/';
+import { Container, IconButton,Tooltip,CircularProgress, Box } from '@material-ui/core/';
 import InfoIcon from '@material-ui/icons/Info';
 import MaterialTable from "material-table";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
@@ -26,24 +26,32 @@ const ConsultantList = () => {
         getConsultants,
         setConsultantIsSelected,
         isConsultantSelected,
+        setConsultantsData,
      } = useContext(AppContext);
 
     const [init, setInit] = useState(false);
+    const [isLoading, setIsloading] = useState(false);
 
     useEffect(() => {
+        setIsloading(true);
         if (!init) {
             getConsultants();
+            setIsloading(false);
           }
           // eslint-disable-next-line
     }, [init]);
 
-    const updateConsultant =  async (updatedData) => {
-        const resp = await DataServices.updateConsultant(updatedData,updatedData._id);
-        getConsultants();
-    }
-
     const suspendConsultant = async (id) => {
         const resp = await DataServices.updateConsultantStatus({active: false},id);
+        setConsultantsData((currentState) => {
+            const filteredData = currentState.filter(d => d._id !== id);
+            const newData = currentState.filter(d => d._id == id);
+            newData.active = false;
+            return [
+                ...currentState,
+                newData
+            ]
+        });
         getConsultants();
     }
 
@@ -89,7 +97,7 @@ const ConsultantList = () => {
         <>
             <Container style={{ marginTop: '25px'}}>
 
-            {isConsultantSelected
+            {isLoading ? <Box style={{ marginTop: '25px', alignContent: 'center', textAlign: 'center'}}> <CircularProgress/> </Box> : isConsultantSelected
             ? <ConsultantFile closeFile={closeFile} />
             :   <MaterialTable
             style={{   fontFamily: "NewsCycleRegular"}}

@@ -4,8 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 
-import DataService from '../services/DataServices'
-import { AppContext } from '../context/AppContext';
+import DataService from '../../services/DataServices'
+import { AppContext } from '../../context/AppContext';
 
 
 const useStyles = makeStyles((theme) => ({

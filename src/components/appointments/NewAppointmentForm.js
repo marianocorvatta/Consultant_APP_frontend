@@ -5,10 +5,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import is from 'is_js';
 import moment from "moment";
 
-// import { AppointmentTypes } from '../components/AppointmentTypes';
 
-import DataServices from '../services/DataServices';
-import { AppContext } from '../context/AppContext';
+import DataServices from '../../services/DataServices';
+import { AppContext } from '../../context/AppContext';
 
 
 const useStyles = makeStyles((theme) => ({
