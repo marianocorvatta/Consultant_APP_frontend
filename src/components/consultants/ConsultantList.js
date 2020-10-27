@@ -60,8 +60,21 @@ const ConsultantList = () => {
     }
 
     const activateConsultant = async (id) => {
-        const resp = await DataServices.updateConsultantStatus({active: true},id);
-        getConsultants();
+        try {
+            const resp = await DataServices.updateConsultantStatus({active: true},id);
+            setConsultantsData((currentState) => {
+                const filteredData = currentState.filter(d => d._id !== id);
+                const newData = currentState.filter(d => d._id == id)[0];
+                newData.active = true;
+                return [
+                    ...filteredData,
+                    newData
+                ]
+            });
+        } catch (e) {
+            console.log(e);
+        }
+        // getConsultants();
     }
 
     const UserActionButtons = ({ consultant }) => {
